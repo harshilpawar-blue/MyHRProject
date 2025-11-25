@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrueNorth HR | Transparent Engineering & HR Solutions</title>
+    
+    <!-- Fonts: Open Sans for Body, Montserrat for Headings -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Icons: FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS (Utility Framework) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Configuration for Brand Colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            navy: '#0f172a', // Deep corporate blue
+                            blue: '#1e40af', // Primary action blue
+                            teal: '#0d9488', // Accent for "Transparency/Ethics"
+                            orange: '#f97316', // Accent for "Action"
+                            light: '#f8fafc', // Backgrounds
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Open Sans"', 'sans-serif'],
+                        heading: ['"Montserrat"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Animations */
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Smooth Scroll */
+        html { scroll-behavior: smooth; }
+
+        /* Tracker Animation */
+        .tracker-bar {
+            transition: width 1.5s ease-in-out;
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-700 bg-white antialiased">
+
+    <!-- NAVIGATION -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur shadow-sm border-b border-gray-100 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <div class="w-10 h-10 bg-brand-navy rounded-lg flex items-center justify-center text-white mr-2">
+                        <i class="fa-solid fa-compass fa-lg"></i>
+                    </div>
+                    <div>
+                        <span class="font-heading font-bold text-xl text-brand-navy tracking-tight">TrueNorth<span class="text-brand-teal">HR</span></span>
+                        <p class="text-[10px] text-gray-500 font-semibold tracking-wider uppercase">Engineering Transparency</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#services" class="text-sm font-semibold text-slate-600 hover:text-brand-blue transition">Services</a>
+                    <a href="#process" class="text-sm font-semibold text-slate-600 hover:text-brand-blue transition">Our Process</a>
+                    <a href="#about" class="text-sm font-semibold text-slate-600 hover:text-brand-blue transition">About Us</a>
+                    <a href="#blog" class="text-sm font-semibold text-slate-600 hover:text-brand-blue transition">Knowledge Hub</a>
+                </div>
+
+                <!-- CTA Buttons -->
+                <div class="hidden md:flex space-x-3">
+                    <button class="text-sm font-bold text-brand-navy hover:text-brand-blue px-3 py-2">
+                        <i class="fa-solid fa-right-to-bracket mr-2"></i>Login
+                    </button>
+                    <button class="bg-brand-teal hover:bg-teal-700 text-white text-sm font-bold px-5 py-2.5 rounded-full shadow-lg transition transform hover:-translate-y-0.5">
+                        Track Application
+                    </button>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button class="text-gray-500 hover:text-brand-navy focus:outline-none" onclick="toggleMobileMenu()">
+                        <i class="fa-solid fa-bars fa-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-white border-t border-gray-100" id="mobile-menu">
+            <div class="px-4 pt-2 pb-4 space-y-1">
+                <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-brand-blue hover:bg-gray-50">Services</a>
+                <a href="#process" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-brand-blue hover:bg-gray-50">Our Process</a>
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-brand-blue hover:bg-gray-50">About Us</a>
+                <div class="border-t border-gray-100 mt-2 pt-2">
+                    <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-brand-teal">Track Status</a>
+                    <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-brand-navy">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION (Split Funnel) -->
+    <section class="relative pt-20 lg:h-screen min-h-[800px] flex flex-col md:flex-row">
+        
+        <!-- Left Side: For Candidates -->
+        <div class="w-full md:w-1/2 bg-brand-light flex flex-col justify-center px-8 lg:px-20 py-12 md:py-0 border-r border-gray-200 relative group overflow-hidden">
+            <div class="absolute inset-0 bg-blue-50 opacity-0 group-hover:opacity-100 transition duration-500"></div>
+            <div class="relative z-10 max-w-lg mx-auto md:mx-0 fade-in-up">
+                <span class="inline-block py-1 px-3 rounded-full bg-blue-100 text-brand-blue text-xs font-bold tracking-wide mb-4">FOR TALENT</span>
+                <h1 class="font-heading text-4xl lg:text-5xl font-extrabold text-brand-navy mb-4 leading-tight">
+                    Engineer Your <br><span class="text-brand-blue">Dream Career.</span>
+                </h1>
+                <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+                    Stop sending resumes into the void. Get expert CV writing, technical interview coaching, and strategic job mapping tailored for the IT sector.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#candidate-pricing" class="inline-flex justify-center items-center px-8 py-3 border border-transparent text-base font-bold rounded-md text-white bg-brand-blue hover:bg-blue-800 shadow-lg hover:shadow-xl transition-all">
+                        Upgrade My Profile
+                    </a>
+                    <a href="#process" class="inline-flex justify-center items-center px-8 py-3 border border-gray-300 text-base font-bold rounded-md text-brand-navy bg-white hover:bg-gray-50 shadow-sm transition-all">
+                        How It Works
+                    </a>
+                </div>
+                <div class="mt-8 flex items-center space-x-4 text-sm text-gray-500">
+                    <div class="flex items-center"><i class="fa-solid fa-check-circle text-green-500 mr-2"></i> ATS Friendly</div>
+                    <div class="flex items-center"><i class="fa-solid fa-check-circle text-green-500 mr-2"></i> Expert Writers</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side: For Employers -->
+        <div class="w-full md:w-1/2 bg-brand-navy flex flex-col justify-center px-8 lg:px-20 py-12 md:py-0 relative overflow-hidden">
+            <div class="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-brand-teal rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+            <div class="relative z-10 max-w-lg mx-auto md:mx-0 fade-in-up" style="animation-delay: 0.2s;">
+                <span class="inline-block py-1 px-3 rounded-full bg-teal-900 text-brand-teal text-xs font-bold tracking-wide mb-4 border border-teal-800">FOR EMPLOYERS</span>
+                <h1 class="font-heading text-4xl lg:text-5xl font-extrabold text-white mb-4 leading-tight">
+                    Hiring, Payroll & <br><span class="text-brand-teal">Compliance. Solved.</span>
+                </h1>
+                <p class="text-lg text-blue-100 mb-8 leading-relaxed">
+                    Outsource your HR headaches. From niche IT recruitment to end-to-end payroll management, we bring transparency to your workforce operations.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#employer-services" class="inline-flex justify-center items-center px-8 py-3 border border-transparent text-base font-bold rounded-md text-brand-navy bg-brand-teal hover:bg-teal-400 shadow-lg hover:shadow-teal-500/50 transition-all">
+                        Hire Experts
+                    </a>
+                    <a href="#" class="inline-flex justify-center items-center px-8 py-3 border border-gray-600 text-base font-bold rounded-md text-white hover:bg-white/10 transition-all">
+                        View Solutions
+                    </a>
+                </div>
+                <div class="mt-8 flex items-center space-x-4 text-sm text-blue-200">
+                    <div class="flex items-center"><i class="fa-solid fa-shield-halved text-brand-teal mr-2"></i> 100% Compliant</div>
+                    <div class="flex items-center"><i class="fa-solid fa-eye text-brand-teal mr-2"></i> Live Tracking</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- USP STRIP -->
+    <section class="bg-white border-y border-gray-100 relative z-20 -mt-4 shadow-sm mx-4 md:mx-auto max-w-6xl rounded-lg">
+        <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-100">
+            <!-- Feature 1 -->
+            <div class="p-6 flex items-start space-x-4">
+                <div class="flex-shrink-0">
+                    <div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-brand-blue">
+                        <i class="fa-solid fa-magnifying-glass-dollar fa-lg"></i>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-heading font-bold text-gray-900">Total Transparency</h3>
+                    <p class="text-sm text-gray-500 mt-1">No hidden fees. We disclose our markup and process costs upfront.</p>
+                </div>
+            </div>
+            <!-- Feature 2 -->
+            <div class="p-6 flex items-start space-x-4">
+                <div class="flex-shrink-0">
+                    <div class="w-12 h-12 rounded-full bg-teal-50 flex items-center justify-center text-brand-teal">
+                        <i class="fa-solid fa-stopwatch fa-lg"></i>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-heading font-bold text-gray-900">Live Status Tracking</h3>
+                    <p class="text-sm text-gray-500 mt-1">Never get ghosted. Track your resume or hiring request in real-time.</p>
+                </div>
+            </div>
+            <!-- Feature 3 -->
+            <div class="p-6 flex items-start space-x-4">
+                <div class="flex-shrink-0">
+                    <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center text-brand-orange">
+                        <i class="fa-solid fa-users-gear fa-lg"></i>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-heading font-bold text-gray-900">Small Expert Pool</h3>
+                    <p class="text-sm text-gray-500 mt-1">Work with specialized Engineering & HR consultants, not bots.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIVE TRACKER DEMO SECTION -->
+    <section id="process" class="py-20 bg-gray-50 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-heading text-3xl font-extrabold text-brand-navy sm:text-4xl">
+                    Stop Guessing. <span class="text-brand-teal">Start Tracking.</span>
+                </h2>
+                <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-500">
+                    Our "Domino's Style" tracker keeps you informed at every step. Whether you're a candidate or a company, you get a unique link to watch progress happen.
+                </p>
+            </div>
+
+            <!-- The Tracker UI Component -->
+            <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
+                <div class="bg-brand-navy px-6 py-4 flex justify-between items-center">
+                    <div class="text-white font-mono text-sm"><span class="text-brand-teal">ID:</span> #RES-2024-892</div>
+                    <div class="text-white text-xs bg-white/10 px-2 py-1 rounded">Live Updated</div>
+                </div>
+                <div class="p-8">
+                    <div class="mb-8">
+                        <h3 class="text-lg font-bold text-gray-800">Project: Senior Java Developer Resume Rewrite</h3>
+                        <p class="text-sm text-gray-500">Assigned Expert: <span class="font-semibold text-brand-blue">Rohan M. (12 Yrs Exp)</span></p>
+                    </div>
+
+                    <!-- Progress Bar -->
+                    <div class="relative">
+                        <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-gray-200">
+                            <div id="demo-progress" style="width: 60%" class="tracker-bar shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-brand-teal"></div>
+                        </div>
+                        <div class="flex justify-between text-xs sm:text-sm font-medium text-gray-500">
+                            <div class="w-1/5 text-left text-brand-teal">Order Placed</div>
+                            <div class="w-1/5 text-center text-brand-teal">Expert Assigned</div>
+                            <div class="w-1/5 text-center text-brand-navy font-bold scale-110">Drafting</div>
+                            <div class="w-1/5 text-center">Quality Check</div>
+                            <div class="w-1/5 text-right">Delivery</div>
+                        </div>
+                    </div>
+
+                    <!-- Live Log -->
+                    <div class="mt-8 bg-gray-50 rounded-lg p-4 border border-gray-100 h-32 overflow-y-auto font-mono text-xs text-gray-600 space-y-2">
+                        <div class="flex items-center">
+                            <span class="w-20 text-gray-400">10:45 AM</span>
+                            <span class="text-green-600 font-bold mr-2">[UPDATE]</span>
+                            <span>Drafting roughly 60% complete. Focusing on "Project Architecture" section.</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="w-20 text-gray-400">09:15 AM</span>
+                            <span class="text-blue-600 font-bold mr-2">[INFO]</span>
+                            <span>Expert Rohan M. has started working on your file.</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="w-20 text-gray-400">Yesterday</span>
+                            <span class="text-gray-500 font-bold mr-2">[SYSTEM]</span>
+                            <span>Payment received. Order #892 confirmed.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="px-6 py-4 bg-gray-50 border-t border-gray-100 flex justify-end">
+                    <button onclick="simulateProgress()" class="text-sm text-brand-blue font-semibold hover:underline">
+                        <i class="fa-solid fa-play mr-1"></i> Simulate Update
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION (Tabs) -->
+    <section id="services" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-brand-teal font-bold tracking-wider uppercase text-sm">Our Portfolio</span>
+                <h2 class="font-heading text-3xl font-extrabold text-brand-navy mt-2">Services Engineered for Results</h2>
+            </div>
+
+            <!-- Tab Toggles -->
+            <div class="flex justify-center mb-12">
+                <div class="bg-gray-100 p-1 rounded-full inline-flex">
+                    <button onclick="switchTab('candidates')" id="tab-candidates" class="px-8 py-2 rounded-full text-sm font-bold bg-white text-brand-navy shadow-sm transition-all">For Candidates</button>
+                    <button onclick="switchTab('employers')" id="tab-employers" class="px-8 py-2 rounded-full text-sm font-bold text-gray-500 hover:text-brand-navy transition-all">For Employers</button>
+                </div>
+            </div>
+
+            <!-- CANDIDATE CONTENT -->
+            <div id="content-candidates" class="fade-in-up">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Service Card -->
+                    <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all group">
+                        <div class="w-12 h-12 bg-blue-50 text-brand-blue rounded-lg flex items-center justify-center mb-4 group-hover:bg-brand-blue group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-file-pen fa-lg"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">CV Engineering</h3>
+                        <p class="text-sm text-gray-500 mb-4">Not just writing. We structure your CV for ATS algorithms and Engineering Managers.</p>
+                        <a href="#" class="text-brand-teal text-sm font-bold hover:underline">View Packages →</a>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all group">
+                        <div class="w-12 h-12 bg-blue-50 text-brand-blue rounded-lg flex items-center justify-center mb-4 group-hover:bg-brand-blue group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-chalkboard-user fa-lg"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Interview Prep</h3>
+                        <p class="text-sm text-gray-500 mb-4">1-on-1 Mock Interviews with Technical Leads from top product companies.</p>
+                        <a href="#" class="text-brand-teal text-sm font-bold hover:underline">Book Session →</a>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all group">
+                        <div class="w-12 h-12 bg-blue-50 text-brand-blue rounded-lg flex items-center justify-center mb-4 group-hover:bg-brand-blue group-hover:text-white transition-colors">
+                            <i class="fa-brands fa-linkedin fa-lg"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">LinkedIn Audit</h3>
+                        <p class="text-sm text-gray-500 mb-4">Turn your profile into a recruiter magnet with keyword optimization.</p>
+                        <a href="#" class="text-brand-teal text-sm font-bold hover:underline">Optimize Now →</a>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all group">
+                        <div class="w-12 h-12 bg-blue-50 text-brand-blue rounded-lg flex items-center justify-center mb-4 group-hover:bg-brand-blue group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-map-location-dot fa-lg"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Job Mapping</h3>
+                        <p class="text-sm text-gray-500 mb-4">Strategic targeting of companies that match your specific tech stack.</p>
+                        <a href="#" class="text-brand-teal text-sm font-bold hover:underline">Start Mapping →</a>
+                    </div>
+                </div>
+
+                <!-- Pricing Table -->
+                <div id="candidate-pricing" class="mt-16 max-w-5xl mx-auto">
+                    <h3 class="text-2xl font-bold text-center mb-8">Transparent Pricing Plans</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-0 border border-gray-200 rounded-2xl overflow-hidden shadow-sm">
+                        <!-- Plan 1 -->
+                        <div class="bg-white p-8 border-b md:border-b-0 md:border-r border-gray-200 hover:bg-gray-50 transition">
+                            <h4 class="text-xl font-bold text-brand-navy">The Starter</h4>
+                            <p class="text-sm text-gray-500 mt-1">Freshers (0-3 Years)</p>
+                            <div class="my-6">
+                                <span class="text-3xl font-extrabold text-gray-900">₹1,499</span>
+                            </div>
+                            <ul class="space-y-3 text-sm text-gray-600 mb-8">
+                                <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> Certified Writer</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> ATS Resume Format</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> Cover Letter Template</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> Live Tracking Link</li>
+                            </ul>
+                            <button class="w-full py-2 px-4 border border-brand-blue text-brand-blue font-bold rounded hover:bg-brand-blue hover:text-white transition">Select Plan</button>
+                        </div>
+                        <!-- Plan 2 (Popular) -->
+                        <div class="bg-blue-50 p-8 border-b md:border-b-0 md:border-r border-gray-200 relative">
+                            <div class="absolute top-0 right-0 bg-brand-orange text-white text-xs font-bold px-2 py-1 rounded-bl">POPULAR</div>
+                            <h4 class="text-xl font-bold text-brand-navy">The Professional</h4>
+                            <p class="text-sm text-gray-500 mt-1">Mid-Level (3-10 Years)</p>
+                            <div class="my-6">
+                                <span class="text-3xl font-extrabold text-gray-900">₹2,999</span>
+                            </div>
+                            <ul class="space-y-3 text-sm text-gray-600 mb-8">
+                                <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> Industry IT Specialist</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> Tech Stack Optimization</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> LinkedIn Profile Update</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> Live Tracking Link</li>
+                            </ul>
+                            <button class="w-full py-2 px-4 bg-brand-blue text-white font-bold rounded shadow-md hover:bg-blue-800 transition">Select Plan</button>
+                        </div>
+                        <!-- Plan 3 -->
+                        <div class="bg-white p-8 hover:bg-gray-50 transition">
+                            <h4 class="text-xl font-bold text-brand-navy">The Executive</h4>
+                            <p class="text-sm text-gray-500 mt-1">Senior (10+ Years)</p>
+                            <div class="my-6">
+                                <span class="text-3xl font-extrabold text-gray-900">₹5,999</span>
+                            </div>
+                            <ul class="space-y-3 text-sm text-gray-600 mb-8">
+                                <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> Senior HR Partner</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> Leadership Branding</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> Networking Strategy</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> Job Mapping Session</li>
+                            </ul>
+                            <button class="w-full py-2 px-4 border border-brand-blue text-brand-blue font-bold rounded hover:bg-brand-blue hover:text-white transition">Select Plan</button>
+                        </div>
+                    </div>
+                    <div class="text-center mt-4">
+                        <p class="text-xs text-gray-400">Prices are indicative. *Transparency Note: 65% of fee goes directly to the Expert Consultant.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EMPLOYER CONTENT (Hidden by default) -->
+            <div id="content-employers" class="hidden">
+                 <div id="employer-services" class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h3 class="text-2xl font-heading font-bold text-brand-navy mb-4">Building Engineering Teams? We speak your language.</h3>
+                        <p class="text-gray-600 mb-6">We don't just "fill positions." We understand the difference between Java and JavaScript. Our boutique pool of recruiters specializes in technical hiring, ensuring you get candidates who can actually code.</p>
+                        
+                        <div class="space-y-6">
+                            <div class="flex">
+                                <div class="flex-shrink-0 w-10 h-10 bg-teal-100 rounded-full flex items-center justify-center text-brand-teal mt-1">
+                                    <i class="fa-solid fa-code"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="text-lg font-bold text-gray-900">Niche Recruitment</h4>
+                                    <p class="text-sm text-gray-500">Full-stack, DevOps, Data Science. We vet for technical fit before culture fit.</p>
+                                </div>
+                            </div>
+                            <div class="flex">
+                                <div class="flex-shrink-0 w-10 h-10 bg-teal-100 rounded-full flex items-center justify-center text-brand-teal mt-1">
+                                    <i class="fa-solid fa-file-invoice-dollar"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="text-lg font-bold text-gray-900">Payroll & Compliance</h4>
+                                    <p class="text-sm text-gray-500">Statutory compliance (PF, ESIC) managed with 100% transparency.</p>
+                                </div>
+                            </div>
+                            <div class="flex">
+                                <div class="flex-shrink-0 w-10 h-10 bg-teal-100 rounded-full flex items-center justify-center text-brand-teal mt-1">
+                                    <i class="fa-solid fa-user-check"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="text-lg font-bold text-gray-900">Background Verification</h4>
+                                    <p class="text-sm text-gray-500">Fast, reliable checks with live status updates for your HR team.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8">
+                            <a href="#contact" class="inline-block bg-brand-teal text-white font-bold py-3 px-8 rounded-md shadow hover:bg-teal-700 transition">Request a Proposal</a>
+                        </div>
+                    </div>
+                    <div class="bg-gray-100 rounded-2xl p-8 border border-gray-200">
+                        <h4 class="font-bold text-brand-navy mb-4">Quick Requirement Form</h4>
+                        <form class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-500 uppercase">Company Name</label>
+                                <input type="text" class="w-full mt-1 p-3 rounded border border-gray-300 focus:outline-none focus:border-brand-blue" placeholder="e.g. TechSolutions Inc.">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-500 uppercase">Service Needed</label>
+                                <select class="w-full mt-1 p-3 rounded border border-gray-300 focus:outline-none focus:border-brand-blue">
+                                    <option>Technical Recruitment</option>
+                                    <option>Payroll Outsourcing</option>
+                                    <option>Compliance Audit</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-500 uppercase">Work Email</label>
+                                <input type="email" class="w-full mt-1 p-3 rounded border border-gray-300 focus:outline-none focus:border-brand-blue" placeholder="hr@company.com">
+                            </div>
+                            <button type="button" class="w-full bg-brand-navy text-white font-bold py-3 rounded hover:bg-slate-800 transition">Get Callback</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT / ETHICS SECTION -->
+    <section id="about" class="py-20 bg-brand-navy text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:flex lg:items-center">
+                <div class="lg:w-1/2 pr-0 lg:pr-12 mb-10 lg:mb-0">
+                    <h2 class="font-heading text-3xl font-extrabold mb-6">Our Philosophy: <br><span class="text-brand-teal">The "Open Book" Standard</span></h2>
+                    <p class="text-gray-300 text-lg mb-6 leading-relaxed">
+                        In an industry clouded by ambiguity, we are the transparent alternative. We believe HR shouldn't be a black box; it should be a clear, logical partnership.
+                    </p>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="border-l-4 border-brand-teal pl-4">
+                            <h4 class="font-bold text-white text-lg">Full Disclosure</h4>
+                            <p class="text-gray-400 text-sm">We share exactly where your money goes.</p>
+                        </div>
+                        <div class="border-l-4 border-brand-teal pl-4">
+                            <h4 class="font-bold text-white text-lg">Focused Hours</h4>
+                            <p class="text-gray-400 text-sm">Our experts work on limited projects to ensure quality.</p>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <a href="#" class="text-brand-teal font-bold hover:text-white transition">Read our Founder's Story →</a>
+                    </div>
+                </div>
+                <div class="lg:w-1/2">
+                    <div class="bg-white/5 p-8 rounded-2xl border border-white/10 backdrop-blur-sm">
+                        <h3 class="font-bold text-xl mb-4">Join Our Expert Pool</h3>
+                        <p class="text-gray-300 mb-6">Are you an HR professional with 10+ years of experience? Join our curated network of consultants.</p>
+                        <a href="#" class="block w-full text-center bg-white text-brand-navy font-bold py-3 rounded hover:bg-gray-100 transition">Apply as Consultant</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 border-t border-slate-800 text-gray-400 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center text-white mb-4">
+                        <i class="fa-solid fa-compass fa-lg mr-2"></i>
+                        <span class="font-heading font-bold text-xl">TrueNorth<span class="text-brand-teal">HR</span></span>
+                    </div>
+                    <p class="text-sm max-w-xs">Bridging the gap between engineering talent and transparent employers. Ethical, Logical, and Human.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4 uppercase text-xs tracking-wider">Services</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-brand-teal">Resume Engineering</a></li>
+                        <li><a href="#" class="hover:text-brand-teal">IT Recruitment</a></li>
+                        <li><a href="#" class="hover:text-brand-teal">Career Coaching</a></li>
+                        <li><a href="#" class="hover:text-brand-teal">Payroll Management</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4 uppercase text-xs tracking-wider">Contact</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><i class="fa-solid fa-envelope mr-2"></i> support@truenorthhr.in</li>
+                        <li><i class="fa-solid fa-phone mr-2"></i> +91 98765 43210</li>
+                        <li><i class="fa-solid fa-location-dot mr-2"></i> Cyber City, Gurugram, India</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs">
+                <p>&copy; 2024 TrueNorth HR Solutions. All rights reserved.</p>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white"><i class="fa-brands fa-linkedin fa-lg"></i></a>
+                    <a href="#" class="hover:text-white"><i class="fa-brands fa-twitter fa-lg"></i></a>
+                    <a href="#" class="hover:text-white"><i class="fa-brands fa-instagram fa-lg"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Toggle Mobile Menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Tab Switching Logic
+        function switchTab(tabName) {
+            const candidateContent = document.getElementById('content-candidates');
+            const employerContent = document.getElementById('content-employers');
+            const candidateBtn = document.getElementById('tab-candidates');
+            const employerBtn = document.getElementById('tab-employers');
+
+            if (tabName === 'candidates') {
+                candidateContent.classList.remove('hidden');
+                candidateContent.classList.add('fade-in-up');
+                employerContent.classList.add('hidden');
+                
+                // Button Styles
+                candidateBtn.classList.add('bg-white', 'text-brand-navy', 'shadow-sm');
+                candidateBtn.classList.remove('text-gray-500');
+                employerBtn.classList.remove('bg-white', 'text-brand-navy', 'shadow-sm');
+                employerBtn.classList.add('text-gray-500');
+            } else {
+                candidateContent.classList.add('hidden');
+                employerContent.classList.remove('hidden');
+                employerContent.classList.add('fade-in-up');
+
+                // Button Styles
+                employerBtn.classList.add('bg-white', 'text-brand-navy', 'shadow-sm');
+                employerBtn.classList.remove('text-gray-500');
+                candidateBtn.classList.remove('bg-white', 'text-brand-navy', 'shadow-sm');
+                candidateBtn.classList.add('text-gray-500');
+            }
+        }
+
+        // Simple Tracker Simulation
+        function simulateProgress() {
+            const bar = document.getElementById('demo-progress');
+            let width = 60;
+            // Reset for demo
+            if (width >= 100) width = 10;
+            
+            // Randomly advance
+            width += 20;
+            if(width > 100) width = 10;
+            
+            bar.style.width = width + '%';
+        }
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-md');
+                nav.classList.remove('py-2');
+            } else {
+                nav.classList.remove('shadow-md');
+            }
+        });
+    </script>
+</body>
+</html>
